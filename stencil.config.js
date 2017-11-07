@@ -1,9 +1,10 @@
 exports.config = {
   bundles: [
-    { components: ['my-name'] }
+    { components: ['my-app'] }
   ],
   collections: [
-    { name: '@stencil/router' }
+    { name: '@stencil/router' },
+    { name: '@stencil/redux' }
   ]
 };
 

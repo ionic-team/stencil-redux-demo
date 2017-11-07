@@ -6,31 +6,33 @@
 
 import '@stencil/router';
 
-import { MyName as MyName } from './components/my-name/my-name';
+import '@stencil/redux';
 
-interface HTMLMyNameElement extends MyName, HTMLElement {
+import { MyApp as MyApp } from './components/my-app/my-app';
+
+interface HTMLMyAppElement extends MyApp, HTMLElement {
 }
-declare var HTMLMyNameElement: {
-  prototype: HTMLMyNameElement;
-  new (): HTMLMyNameElement;
+declare var HTMLMyAppElement: {
+  prototype: HTMLMyAppElement;
+  new (): HTMLMyAppElement;
 };
 declare global {
   interface HTMLElementTagNameMap {
-      "my-name": HTMLMyNameElement;
+      "my-app": HTMLMyAppElement;
   }
   interface ElementTagNameMap {
-      "my-name": HTMLMyNameElement;
+      "my-app": HTMLMyAppElement;
   }
   namespace JSX {
       interface IntrinsicElements {
-          "my-name": JSXElements.MyNameAttributes;
+          "my-app": JSXElements.MyAppAttributes;
       }
   }
   namespace JSXElements {
-      export interface MyNameAttributes extends HTMLAttributes {
+      export interface MyAppAttributes extends HTMLAttributes {
+          mode?: string,
+          color?: string,
         
-          first?: any,
-          last?: any
       }
   }
 }

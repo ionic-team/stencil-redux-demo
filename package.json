@@ -16,7 +16,11 @@
   },
   "dependencies": {
     "@stencil/core": "next",
-    "@stencil/router": "latest"
+    "@stencil/redux": "0.0.3",
+    "@stencil/router": "latest",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
