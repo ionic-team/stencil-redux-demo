@@ -4,36 +4,45 @@
  * and imports for stencil collections that might be configured in your stencil.config.js file
  */
 
-import '@stencil/router';
-
 import '@stencil/redux';
 
-import { MyApp as MyApp } from './components/my-app/my-app';
 
-interface HTMLMyAppElement extends MyApp, HTMLElement {
-}
-declare var HTMLMyAppElement: {
-  prototype: HTMLMyAppElement;
-  new (): HTMLMyAppElement;
-};
 declare global {
+  interface HTMLStencilElement extends HTMLElement {
+    componentOnReady(): Promise<this>;
+    componentOnReady(done: (ele?: this) => void): void;
+  }
+}
+
+
+
+import {
+  MyApp as MyApp
+} from './components/my-app/my-app';
+
+declare global {
+  interface HTMLMyAppElement extends MyApp, HTMLStencilElement {
+  }
+  var HTMLMyAppElement: {
+    prototype: HTMLMyAppElement;
+    new (): HTMLMyAppElement;
+  };
   interface HTMLElementTagNameMap {
-      "my-app": HTMLMyAppElement;
+    "my-app": HTMLMyAppElement;
   }
   interface ElementTagNameMap {
-      "my-app": HTMLMyAppElement;
+    "my-app": HTMLMyAppElement;
   }
   namespace JSX {
-      interface IntrinsicElements {
-          "my-app": JSXElements.MyAppAttributes;
-      }
+    interface IntrinsicElements {
+      "my-app": JSXElements.MyAppAttributes;
+    }
   }
   namespace JSXElements {
-      export interface MyAppAttributes extends HTMLAttributes {
-          mode?: string,
-          color?: string,
-        
-      }
+    export interface MyAppAttributes extends HTMLAttributes {
+      
+    }
   }
 }
 
+declare global { namespace JSX { interface StencilJSX {} } }

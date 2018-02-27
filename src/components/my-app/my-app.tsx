@@ -6,7 +6,7 @@ import { configureStore } from '../../store/index';
 
 @Component({
   tag: 'my-app',
-  styleUrl: 'my-app.scss'
+  styleUrl: 'my-app.css'
 })
 export class MyApp {
   @Prop({ context: 'store' }) store: Store;
