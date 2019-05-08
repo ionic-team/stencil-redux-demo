@@ -1,15 +1,15 @@
-import { Component, Prop, State } from '@stencil/core';
-import { Store } from '@stencil/redux';
+import { Component, Prop, State, h } from "@stencil/core";
+import { Store } from "@stencil/redux";
 
-import { appSetName } from '../../actions/app';
-import { configureStore } from '../../store/index';
+import { appSetName } from "../../actions/app";
+import { configureStore } from "../../store/index";
 
 @Component({
-  tag: 'my-app',
-  styleUrl: 'my-app.css'
+  tag: "my-app",
+  styleUrl: "my-app.css"
 })
 export class MyApp {
-  @Prop({ context: 'store' }) store: Store;
+  @Prop({ context: "store" }) store: Store;
 
   @State() name: string;
 
@@ -26,7 +26,7 @@ export class MyApp {
 
       return {
         name
-      }
+      };
     });
 
     this.store.mapDispatchToProps(this, {
@@ -38,9 +38,12 @@ export class MyApp {
     return (
       <div>
         Hello, my name is {this.name}
-
         <p>
-          <input type="text" onInput={(e: any) => this.appSetName(e.target.value)} value={this.name}/>
+          <input
+            type="text"
+            onInput={(e: any) => this.appSetName(e.target.value)}
+            value={this.name}
+          />
         </p>
       </div>
     );
