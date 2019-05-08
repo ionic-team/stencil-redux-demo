@@ -1,16 +1,12 @@
 import { TypeKeys, ActionTypes } from '../actions/index';
 
-interface AppState {
-  name: string;
-}
-
-const getInitialState = () => {
+const getInitialState = (): AppState => {
   return {
     name: 'Stencil Redux'
   }
 };
 
-const app = (state: AppState = getInitialState(), action: ActionTypes) => {
+const app = (state = getInitialState(), action: ActionTypes): AppState => {
   switch (action.type) {
     case TypeKeys.APP_SET_NAME: {
       return { ...state, name: action.name }

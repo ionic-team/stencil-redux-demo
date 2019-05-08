@@ -1,5 +1,5 @@
 import { Component, Prop, State } from '@stencil/core';
-import { Store, Action } from '@stencil/redux';
+import { Store } from '@stencil/redux';
 
 import { appSetName } from '../../actions/app';
 import { configureStore } from '../../store/index';
@@ -13,13 +13,13 @@ export class MyApp {
 
   @State() name: string;
 
-  appSetName: Action;
+  appSetName: typeof appSetName;
 
   componentWillLoad() {
     // Only do this once, in the root component
     this.store.setStore(configureStore({}));
 
-    this.store.mapStateToProps(this, (state) => {
+    this.store.mapStateToProps(this, (state: StoreState) => {
       const {
         app: { name }
       } = state;
